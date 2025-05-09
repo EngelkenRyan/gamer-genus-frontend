@@ -1,0 +1,257 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nova+Square&display=swap');
+
+.modal-content {
+  background-color: #9fafca;
+  color: black;
+}
+
+/* Review Create */
+.reviewcreateinputs {
+  text-align: center;
+  background-color: #c0c0c0;
+  margin-bottom: 10px;
+  color: black;
+  border-radius: 12px;
+  font-family: 'Nova Square', cursive;
+}
+
+.reviewcreateinputsfeedback {
+  text-align: center;
+  background-color: #c0c0c0;
+  margin-bottom: 10px;
+  color: black;
+  padding: 20px 10px;
+  line-height: 28px;
+  width: 100%;
+  border-radius: 12px;
+  font-family: 'Nova Square', cursive;
+}
+
+.textareacreate {
+  text-align: center;
+  background-color: #c0c0c0;
+  margin-bottom: 10px;
+  color: black;
+  width: 100%;
+  border-radius: 12px;
+  font-family: 'Nova Square', cursive;
+
+}
+
+.submitreviewbtn {
+  display: block;
+    margin: 20px auto 0 auto;
+  background-color: #c0c0c0;
+  color: black;
+  font-size: 12px;
+  border-radius: 12px;
+  font-family: 'Nova Square', cursive;
+  text-align: center;
+}
+
+.submitreviewbtn:hover {
+  background-color: #007bff;
+  color: black;
+}
+
+.reviewcreateheader {
+  margin-right: auto;
+  margin-left: auto;
+  font-family: 'Orbitron', sans-serif;
+
+}
+
+
+/* @import url("https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@1,700&display=swap"); */
+
+/* Display Games */
+.searchbar {
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  margin-bottom: 30px;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.searchbarinput {
+  margin-left: 2%;
+  border-style: none;
+  border-bottom: solid;
+  border-radius: 12px;
+  font-family: 'Nova Square', cursive;
+}
+
+.displaygamesdiv {
+  background-color: #526f9e;
+  overflow: auto;
+  height: 100vh;
+  padding-top: 44px;
+  padding-bottom: 25px;
+  margin-top: 2%;
+  font-family: 'Nova Square', cursive;
+}
+
+.searchButton {
+  background-color: #c0c0c0;
+  color: black;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  font-size: 12px;
+  border-radius: 12px;
+  font-family: 'Nova Square', cursive;
+  border-color: none;
+  border-style: none;
+}
+
+.searchButton:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+/* Review All */
+
+.reviewAll {
+  background-color: #526f9e;
+  overflow: auto;
+  height: 100vh;
+  padding-top: 44px;
+  padding-bottom: 25px;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.reviewallhead {
+  margin-top: 30px;
+  text-align: center;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 25px;
+}
+
+.allReviews {
+  font-family: 'Nova Square', cursive;
+}
+
+/* Review Mine */
+
+.reviewminehead {
+  margin-top: 30px;
+  text-align: center;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 25px;
+  font-family: 'Orbitron', sans-serif;
+
+}
+
+.reviewminecardactions {
+  display: flex;
+  justify-content: center;
+}
+
+.reviewmine {
+  background-color: #526f9e;
+  overflow: auto;
+  height: 100vh;
+  padding-top: 44px;
+  padding-bottom: 25px;
+}
+
+/* Update Button */
+
+.updatereviewbtn {
+  background-color: #c0c0c0;
+    color: black;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    font-size: 12px;
+    border-radius: 12px;
+    font-family: 'Nova Square', cursive;
+}
+
+.updatereviewbtn:hover {
+  background-color: white;
+  color: black;
+}
+
+/* Delete Button */
+.deletereviewbtn {
+  background-color: #c0c0c0;
+  color: black;
+  margin-bottom: 5%;
+  font-size: 12px;
+  border-radius: 12px;
+  font-family: 'Nova Square', cursive;
+}
+
+.deletereviewbtn:hover {
+  background-color: white;
+  color: black;
+}
+
+/* Review Update */
+
+.reviewupdateheader {
+  margin-right: auto;
+  margin-left: auto;
+  align-content: center;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.editreviewinput {
+  text-align: center;
+  background-color: #c0c0c0;
+  margin-bottom: 10px;
+  color: black;
+  border-radius: 12px;
+  font-family: 'Nova Square', cursive;
+
+}
+
+.editreviewinputfeedback {
+  text-align: center;
+  background-color: #c0c0c0;
+  margin-bottom: 10px;
+  color: black;
+  padding: 20px 10px;
+  line-height: 28px;
+  width: 100%;
+  border-radius: 12px;
+  font-family: 'Nova Square', cursive;
+
+}
+
+/* Card Effects */
+
+.card {
+  display: block;
+  top: 0px;
+  position: relative;
+  max-width: 262px;
+  background-color: #f2f8f9;
+  border-radius: 4px;
+  padding: 32px 24px;
+  margin: 12px;
+  text-decoration: none;
+  z-index: 0;
+  overflow: hidden;
+  border: 1px solid #f2f8f9;
+}
+
+.card:hover {
+  transform: scale(1.15);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+}
+
+.featured-games-section h1 {
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+  color: #e0e0e0;
+  margin-bottom: 20px;
+}
