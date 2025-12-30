@@ -13,15 +13,18 @@ import ReviewUpdate from "./ReviewUpdate";
 import APIURL from "../../helpers/environment";
 import "./Display.css";
 
+// Define types for state and props
 type ReviewMineVars = {
   myReviews: any[];
   loading: boolean;
 };
 
+// Props type
 type ReviewMineProps = {
   token: string;
 };
 
+//  ReviewMine Component
 class ReviewMine extends Component<ReviewMineProps, ReviewMineVars> {
   constructor(props: ReviewMineProps) {
     super(props);
@@ -58,6 +61,7 @@ class ReviewMine extends Component<ReviewMineProps, ReviewMineVars> {
       });
   };
 
+  // Render method
   render() {
     const { myReviews, loading } = this.state;
 

@@ -3,6 +3,7 @@ import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 import APIURL from "../helpers/environment";
 import "./Auth.css";
 
+// Define types for component state and props
 type UserVars = {
   email: string;
   password: string;
@@ -10,11 +11,13 @@ type UserVars = {
   errorMessage: string;
 };
 
+// Define types for component props
 type LoginProps = {
   updateToken: (newToken: string) => void;
   token: string;
 };
 
+// Login component for user authentication
 class Login extends Component<LoginProps, UserVars> {
   constructor(props: LoginProps) {
     super(props);
@@ -59,9 +62,8 @@ class Login extends Component<LoginProps, UserVars> {
       });
   };
 
-  // ✅ quick demo logins
+  // Helper function to log in as test user or admin
   loginAs = (type: "user" | "admin") => {
-    // IMPORTANT: Create these accounts in your DB once (see notes below)
     const creds =
       type === "admin"
         ? { email: "testadmin@gamergenus.com", password: "Test@1234" }
@@ -90,7 +92,6 @@ class Login extends Component<LoginProps, UserVars> {
             {this.state.errorMessage}
           </div>
         )}
-
 
         <div
           style={{
@@ -139,7 +140,7 @@ class Login extends Component<LoginProps, UserVars> {
               }}
             />
           </FormGroup>
-
+          
           <FormGroup className="login-form">
             <Label htmlFor="password" className="login-label">
               Password

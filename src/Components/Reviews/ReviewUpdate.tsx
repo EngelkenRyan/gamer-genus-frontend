@@ -3,6 +3,7 @@ import { Button, Form, Input, Modal, ModalBody, ModalHeader } from "reactstrap";
 import APIURL from "../../helpers/environment";
 import "./Display.css";
 
+// Define types for state and props
 type ReviewUpdateVars = {
   gametitle: string;
   date: string;
@@ -11,12 +12,14 @@ type ReviewUpdateVars = {
   modal: boolean;
 };
 
+// Props type
 type ReviewUpdateProps = {
   token: string;
   myReviews: any;
   fetchMyReviews: Function;
 };
 
+//  ReviewUpdate Component
 class ReviewUpdate extends Component<ReviewUpdateProps, ReviewUpdateVars> {
   constructor(props: ReviewUpdateProps) {
     super(props);
@@ -35,6 +38,7 @@ class ReviewUpdate extends Component<ReviewUpdateProps, ReviewUpdateVars> {
     });
   };
 
+  // Handle review update submission
   handleReviewUpdate = async (e: any) => {
     e.preventDefault();
     await fetch(`${APIURL}/review/update/${this.props.myReviews.id}`, {
@@ -60,6 +64,7 @@ class ReviewUpdate extends Component<ReviewUpdateProps, ReviewUpdateVars> {
       });
   };
 
+  // Render method
   render() {
     return (
       <div className="updatereview">

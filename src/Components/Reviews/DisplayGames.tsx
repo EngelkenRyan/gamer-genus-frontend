@@ -9,6 +9,7 @@ import {
 import CreateReview from "./ReviewCreate";
 import "./Display.css";
 
+// Define types for state and props
 type DisplayGamesVars = {
   gamesList: any[];
   apiKey: string;
@@ -17,10 +18,12 @@ type DisplayGamesVars = {
   loading: boolean;
 };
 
+// Props type
 type DisplayGamesProps = {
   token: string;
 };
 
+//  DisplayGames Component
 class DisplayGames extends React.Component<
   DisplayGamesProps,
   DisplayGamesVars
@@ -40,6 +43,7 @@ class DisplayGames extends React.Component<
     this.fetchRandomGames();
   }
 
+  // Fetch random games from RAWG API
   fetchRandomGames = async () => {
     this.setState({ loading: true });
     await fetch(
@@ -82,6 +86,7 @@ class DisplayGames extends React.Component<
       });
   };
 
+  // Update search term as user types
   updateSearchTerm = (e: any) => {
     this.setState({ searchTerm: e.target.value });
   };

@@ -4,6 +4,7 @@ import { Form, Input, Button, Modal, ModalBody, ModalHeader } from "reactstrap";
 import APIURL from "../../helpers/environment";
 import "./Display.css";
 
+// Define types for state and props
 type CreateReviewVars = {
   date: string;
   feedback: string;
@@ -11,11 +12,13 @@ type CreateReviewVars = {
   modal: boolean;
 };
 
+// Props type
 type CreateReviewProps = {
   token: string;
   game: any;
 };
 
+// CreateReview Component
 class CreateReview extends Component<CreateReviewProps, CreateReviewVars> {
   constructor(props: CreateReviewProps) {
     super(props);
@@ -55,6 +58,7 @@ class CreateReview extends Component<CreateReviewProps, CreateReviewVars> {
       .catch((error) => console.log(error.message));
   };
 
+  //  Render method
   render() {
     return (
       <div>

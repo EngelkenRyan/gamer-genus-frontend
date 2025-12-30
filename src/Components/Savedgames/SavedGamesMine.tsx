@@ -12,6 +12,7 @@ import DeleteSavedGame from "./DeleteSavedGame";
 import APIURL from "../../helpers/environment";
 import "./Saved.css";
 
+// Define types for state and props
 type SavedMineVars = {
   myPosts: any[];
   loading: boolean;
@@ -21,6 +22,7 @@ type SavedMineProps = {
   token: string;
 };
 
+// SavedGamesMine Component
 class SavedGamesMine extends Component<SavedMineProps, SavedMineVars> {
   constructor(props: SavedMineProps) {
     super(props);
@@ -30,10 +32,12 @@ class SavedGamesMine extends Component<SavedMineProps, SavedMineVars> {
     };
   }
 
+  // Fetch saved games on component mount
   componentDidMount() {
     this.fetchSavedGames();
   }
 
+  // Fetch saved games from the backend
   fetchSavedGames = async () => {
     this.setState({ loading: true });
 
@@ -57,6 +61,7 @@ class SavedGamesMine extends Component<SavedMineProps, SavedMineVars> {
       });
   };
 
+  // Reload saved games after creating, editing, or deleting
   reloadSavedGames = () => {
     this.fetchSavedGames();
   };
@@ -64,6 +69,7 @@ class SavedGamesMine extends Component<SavedMineProps, SavedMineVars> {
   render() {
     const { myPosts, loading } = this.state;
 
+    // Render method
     return (
       <div className="createsaveddiv">
         <h1 className="createsavedhead">My Saved Games</h1>

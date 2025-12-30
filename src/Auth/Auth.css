@@ -101,7 +101,6 @@ html {
     max-width: 400px;
     margin: 0 auto;
     background-color: #6a87b5;
-    /* Muted blue background */
     border-radius: 15px;
     padding: 20px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
@@ -109,7 +108,6 @@ html {
 
 .registerheader {
     background-color: #9fafca;
-    /* Soft blue-gray for header */
     border-bottom: 1px solid #dee2e6;
     text-align: center;
     color: #333;
@@ -148,17 +146,12 @@ html {
     font-family: 'Nova Square', cursive;
 }
 
-/* New Rules to Fix White Box in Modal Body */
 .register-modal .modal-content {
     background-color: #6a87b5;
-    /* Matches the modal background */
     border: none;
-    /* Removes any default border that might cause visual separation */
 }
 
 .register-modal .modal-body {
     background-color: #6a87b5;
-    /* Ensures the body matches the modal background */
     padding: 15px;
-    /* Consistent padding */
 }

@@ -13,6 +13,7 @@ import { withRouter, RouteComponentProps } from "react-router-dom";
 import "./Auth.css";
 import APIURL from "../helpers/environment";
 
+// Define types for component state and props
 type RegisterVars = {
   email: string;
   username: string;
@@ -28,6 +29,7 @@ type RegisterProps = {
   token: string;
 };
 
+// Register component for user account creation
 class Register extends Component<RegisterProps & RouteComponentProps, RegisterVars> {
   constructor(props: RegisterProps & RouteComponentProps) {
     super(props);
@@ -46,6 +48,7 @@ class Register extends Component<RegisterProps & RouteComponentProps, RegisterVa
     this.setState({ modal: !this.state.modal, errorMessage: "" });
   };
 
+  // Handle form submission for user registration
   handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     this.setState({ loading: true, errorMessage: "" });
@@ -96,6 +99,7 @@ class Register extends Component<RegisterProps & RouteComponentProps, RegisterVa
       });
   };
 
+  // Render the registration modal and form
   render() {
     return (
       <div className="Register" style={{ textAlign: "center" }}>

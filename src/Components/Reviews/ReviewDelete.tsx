@@ -5,12 +5,14 @@ import "./Display.css";
 
 type ReviewDeleteVars = {};
 
+// Props type
 type ReviewDeleteProps = {
   token: string;
   myReviews: any;
   fetchMyReviews: Function;
 };
 
+// ReviewDelete Component
 class ReviewDelete extends Component<ReviewDeleteProps, ReviewDeleteVars> {
   constructor(props: ReviewDeleteProps) {
     super(props);
@@ -37,6 +39,7 @@ class ReviewDelete extends Component<ReviewDeleteProps, ReviewDeleteVars> {
       });
   };
 
+  //  Render method
   render() {
     return (
       <div>

@@ -10,38 +10,41 @@ import {
 import { Link } from 'react-router-dom';
 import './navbar.css';
 
+// Define types for props and state
 type NavbarProps = {
     token: string;
     clearToken: () => void;
 };
 
+// Define types for component state
 type NavbarVars = {
     isOpen: boolean;
 };
 
+// Navigation component for app navigation
 class Navigation extends React.Component<NavbarProps, NavbarVars> {
     constructor(props: NavbarProps) {
         super(props);
-        // Initial state based on screen size
         this.state = {
-            isOpen: false, // Navbar starts closed by default
+            isOpen: false, 
         };
     }
 
-    // Toggle navbar open/close
+    // Toggle the navbar for mobile view
     toggle = () => {
         this.setState(prevState => ({
             isOpen: !prevState.isOpen,
         }));
     };
 
-    // Close the navbar on mobile screens when a link is clicked
+    // Handle navigation link clicks to close navbar on mobile
     handleNavClick = () => {
         if (window.innerWidth <= 768) {
             this.setState({ isOpen: false });
         }
     };
 
+    // Render the Navigation component
     render() {
         return (
             <Navbar light expand="md" className="navbar">
@@ -67,7 +70,7 @@ class Navigation extends React.Component<NavbarProps, NavbarVars> {
                     <div className="logout-container">
                         <Button onClick={() => {
                             this.props.clearToken();
-                            this.handleNavClick();  // Ensure navbar closes on logout
+                            this.handleNavClick(); 
                         }} className="navbar-btn">
                             Logout
                         </Button>

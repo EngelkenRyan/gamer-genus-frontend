@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Register from "./Register";
 import Login from "./Login";
 
+// Define types for state and props
 type AuthVariables = {
   signupOpen: boolean;
   loginOpen: boolean;
@@ -12,6 +13,7 @@ type AuthProps = {
   token: string;
 };
 
+// Auth component managing login and registration modals
 class Auth extends Component<AuthProps, AuthVariables> {
   constructor(props: AuthProps) {
     super(props);
@@ -37,6 +39,7 @@ class Auth extends Component<AuthProps, AuthVariables> {
     });
   };
 
+  // Render the Auth component with Login and Register components
   render() {
     return (
       <div className="Auth">

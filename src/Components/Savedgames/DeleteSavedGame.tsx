@@ -4,18 +4,21 @@ import APIURL from "../../helpers/environment";
 
 type DeleteGameVars = {};
 
+// Props type
 type DeleteGameProps = {
   token: string;
   myPosts: any;
   fetchMySavedGames: Function;
 };
 
+// DeleteSavedGame Component
 class DeleteSavedGame extends Component<DeleteGameProps, DeleteGameVars> {
   constructor(props: DeleteGameProps) {
     super(props);
     this.state = {};
   }
 
+  // Handle deletion of saved game
   deleteGame = async () => {
     const ok = window.confirm(
       "Are you sure you want to delete this saved game?"
@@ -38,6 +41,7 @@ class DeleteSavedGame extends Component<DeleteGameProps, DeleteGameVars> {
       });
   };
 
+  // Render method
   render() {
     return (
       <div>

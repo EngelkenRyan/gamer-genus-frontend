@@ -3,6 +3,7 @@ import { Form, Input, Button, Modal, ModalBody, ModalHeader } from "reactstrap";
 import APIURL from "../../helpers/environment";
 import "./Saved.css";
 
+// Define types for state and props
 type SavedGameVars = {
   gametitle: string;
   genre: string;
@@ -12,11 +13,13 @@ type SavedGameVars = {
   modal: boolean;
 };
 
+// Props type
 type SavedGameProps = {
   token: string;
-  reloadSavedGames?: () => void; // Make reloadSavedGames optional
+  reloadSavedGames?: () => void; 
 };
 
+// CreateSavedGame Component
 class CreateSavedGame extends Component<SavedGameProps, SavedGameVars> {
   constructor(props: SavedGameProps) {
     super(props);
@@ -34,6 +37,7 @@ class CreateSavedGame extends Component<SavedGameProps, SavedGameVars> {
     this.setState({ modal: !this.state.modal });
   };
 
+  // Handle form submission for creating a saved game
   handleSumbit = async (e: any) => {
     e.preventDefault();
     const response = await fetch(`${APIURL}/savedgame/savedcreate`, {
@@ -54,7 +58,7 @@ class CreateSavedGame extends Component<SavedGameProps, SavedGameVars> {
       console.log(error.message);
     });
 
-    // If reloadSavedGames is passed, call it after creating a game
+    // Reload saved games after creation
     if (this.props.reloadSavedGames) {
       this.props.reloadSavedGames();
     }

@@ -3,6 +3,7 @@ import { Button, Form, Input, Modal, ModalBody, ModalHeader } from "reactstrap";
 import APIURL from "../../helpers/environment";
 import "./Saved.css";
 
+// Define types for state and props
 type EditGameVars = {
   gametitle: string;
   genre: string;
@@ -11,12 +12,14 @@ type EditGameVars = {
   modal: boolean;
 };
 
+//  Props type
 type EditGameProps = {
   token: string;
   myPosts: any;
   fetchMySavedGames: Function;
 };
 
+// EditSavedGame Component
 class EditSavedGame extends Component<EditGameProps, EditGameVars> {
   constructor(props: EditGameProps) {
     super(props);
@@ -29,12 +32,14 @@ class EditSavedGame extends Component<EditGameProps, EditGameVars> {
     };
   }
 
+  // Toggle modal visibility
   toggle = () => {
     this.setState({
       modal: !this.state.modal,
     });
   };
 
+  // Handle update submission
   handleUpdate = async (e: any) => {
     e.preventDefault();
     await fetch(`${APIURL}/savedgame/savedupdate/${this.props.myPosts.id}`, {
@@ -80,14 +85,6 @@ class EditSavedGame extends Component<EditGameProps, EditGameVars> {
               </ModalHeader>
               <ModalBody>
                 <Form onSubmit={this.handleUpdate}>
-                  {/* <Input
-                    type="text"
-                    placeholder="Game Title"
-                    className="editgameinput"
-                    onChange={(e) =>
-                      this.setState({ gametitle: e.target.value })
-                    }
-                  /> */}
                   <textarea readOnly className="textareacreate">
                     {this.props.myPosts.gametitle}
                     </textarea>

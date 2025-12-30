@@ -10,15 +10,18 @@ import {
 import APIURL from "../../helpers/environment";
 import "./Display.css";
 
+// Define types for state and props
 type ReviewAllVars = {
   myReviews: any[];
   loading: boolean;
 };
 
+// Props type
 type ReviewAllProps = {
   token: string | null;
 };
 
+// ReviewAll Component
 class ReviewAll extends Component<ReviewAllProps, ReviewAllVars> {
   constructor(props: ReviewAllProps) {
     super(props);
@@ -28,10 +31,12 @@ class ReviewAll extends Component<ReviewAllProps, ReviewAllVars> {
     };
   }
 
+  // Fetch all reviews on component mount
   componentDidMount() {
     this.fetchReviewAll();
   }
 
+  // Fetch all reviews from the backend
   fetchReviewAll = async () => {
     this.setState({ loading: true });
 
@@ -55,6 +60,7 @@ class ReviewAll extends Component<ReviewAllProps, ReviewAllVars> {
       });
   };
 
+  // Render method
   render() {
     const { myReviews, loading } = this.state;
 

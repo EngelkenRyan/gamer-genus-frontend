@@ -53,8 +53,7 @@ export default class App extends Component<{}, AppState> {
               clearToken={this.clearToken}
             />
           )}
-
-          {/* THIS fixes the gap: one consistent offset below navbar */}
+          
           <div className="main">{this.protectedView()}</div>
         </Router>
       </div>

@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Nova+Square&display=swap");
 
-/* Page background */
 .createsaveddiv {
   background: linear-gradient(180deg, #526f9e 0%, #344a73 100%);
   overflow: auto;
@@ -11,7 +10,7 @@
   font-family: "Nova Square", cursive;
 }
 
-/* Create Saved Button */
+
 .createsavedbtn {
   background-color: #c0c0c0;
   color: black;
@@ -30,7 +29,6 @@
   color: black;
 }
 
-/* Edit Saved Button */
 .editsavedbtn {
   background-color: #c0c0c0;
   color: black;
@@ -49,7 +47,6 @@
   color: black;
 }
 
-/* Delete Saved Button */
 .deletesavedbtn {
   background-color: #c0c0c0;
   color: black;
@@ -63,7 +60,6 @@
   color: black;
 }
 
-/* Create Saved Game */
 .createsavedinput {
   text-align: center;
   background-color: #c0c0c0;
@@ -95,7 +91,6 @@
   font-family: "Nova Square", cursive;
 }
 
-/* Saved Game Edit */
 .editsavedheader {
   display: flex;
   justify-content: center;
