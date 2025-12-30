@@ -81,7 +81,6 @@ class ReviewAll extends Component<ReviewAllProps, ReviewAllVars> {
               textAlign: "center",
               marginRight: "auto",
               marginLeft: "auto",
-              height: "70%",
               width: "70%",
             }}
           >
@@ -101,8 +100,6 @@ class ReviewAll extends Component<ReviewAllProps, ReviewAllVars> {
                     style={{
                       boxShadow: "0 8px 24px 0",
                       backgroundColor: "#9fafca",
-                      maxWidth: "300px",
-                      borderRadius: "25px",
                     }}
                   >
                     <CardHeader
@@ -113,18 +110,13 @@ class ReviewAll extends Component<ReviewAllProps, ReviewAllVars> {
                       }
                       subheader={review.date}
                     />
-                    <CardMedia
-                      component="img"
-                      image={review.gameimage}
-                      style={{
-                        height: 150,
-                        marginLeft: "auto",
-                        marginRight: "auto",
-                      }}
-                    />
+                    <CardMedia component="img" image={review.gameimage} />
                     <CardContent style={{ fontFamily: "Nova Square" }}>
                       <Typography color="textSecondary">Review:</Typography>
-                      <Typography style={{ fontFamily: "Nova Square" }}>
+                      <Typography
+                        className="clampText"
+                        style={{ fontFamily: "Nova Square" }}
+                      >
                         {review.feedback}
                       </Typography>
                       <br />

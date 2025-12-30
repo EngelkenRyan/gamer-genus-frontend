@@ -1,5 +1,9 @@
-/* index.css */
+/* App.css */
 @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap");
+
+:root {
+  --nav-height: 72px; /* matches navbar height */
+}
 
 body {
   margin: 0;
@@ -9,17 +13,14 @@ body {
   line-height: 1.6;
 }
 
-.page {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 100px 16px 40px;
+.App {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #526f9e 0%, #344a73 100%);
 }
-.pageTitle {
-  text-align: center;
-  margin: 18px 0 18px;
-  font-family: "Orbitron", sans-serif;
-  letter-spacing: 0.5px;
-  color: #e9eef7;
+
+/* Everything under the navbar */
+.main {
+  padding-top: var(--nav-height);
 }
 
 a {
@@ -56,19 +57,4 @@ textarea {
   padding: 0.5rem;
   border-radius: 4px;
   width: 100%;
-}
-
-.container {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-.card {
-  background-color: #1a1a1a;
-  border: 1px solid #333;
-  padding: 1.5rem;
-  border-radius: 12px;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 0 12px rgba(0, 255, 255, 0.2);
 }

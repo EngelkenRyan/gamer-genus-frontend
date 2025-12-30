@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button } from "reactstrap";
 import APIURL from "../../helpers/environment";
+import "./Display.css";
 
 type ReviewDeleteVars = {};
 
@@ -39,11 +40,7 @@ class ReviewDelete extends Component<ReviewDeleteProps, ReviewDeleteVars> {
   render() {
     return (
       <div>
-        <Button
-          className="deletereviewbtn"
-          type="button"
-          onClick={this.deleteReview}
-        >
+        <Button className="actionBtn" type="button" onClick={this.deleteReview}>
           Delete Review
         </Button>
       </div>

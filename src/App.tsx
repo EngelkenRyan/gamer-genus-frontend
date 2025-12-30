@@ -1,8 +1,6 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { Component } from "react";
 import Auth from "./Auth/Auth";
 import "./App.css";
-import CreateSavedGame from "./Components/Savedgames/CreateSavedGame";
-import SavedGamesMine from "./Components/Savedgames/SavedGamesMine";
 import Navigation from "./Navigation/Navbar";
 import Navigationbar from "./Navigation/Navigation";
 import { BrowserRouter as Router } from "react-router-dom";
@@ -30,8 +28,8 @@ export default class App extends Component<{}, AppState> {
   };
 
   clearToken = () => {
-    window.location.href = "/";
     localStorage.clear();
+    window.location.href = "/";
   };
 
   protectedView = () => {
@@ -55,11 +53,11 @@ export default class App extends Component<{}, AppState> {
               clearToken={this.clearToken}
             />
           )}
-          {this.protectedView()}
+
+          {/* THIS fixes the gap: one consistent offset below navbar */}
+          <div className="main">{this.protectedView()}</div>
         </Router>
       </div>
     );
   }
 }
-
-// export default App;

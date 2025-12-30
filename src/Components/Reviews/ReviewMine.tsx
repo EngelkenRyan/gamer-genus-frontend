@@ -11,6 +11,7 @@ import {
 import ReviewDelete from "./ReviewDelete";
 import ReviewUpdate from "./ReviewUpdate";
 import APIURL from "../../helpers/environment";
+import "./Display.css";
 
 type ReviewMineVars = {
   myReviews: any[];
@@ -84,7 +85,6 @@ class ReviewMine extends Component<ReviewMineProps, ReviewMineVars> {
               textAlign: "center",
               marginRight: "auto",
               marginLeft: "auto",
-              height: "70%",
               width: "70%",
             }}
           >
@@ -105,8 +105,6 @@ class ReviewMine extends Component<ReviewMineProps, ReviewMineVars> {
                     style={{
                       boxShadow: "0 8px 24px 0",
                       backgroundColor: "#9fafca",
-                      maxWidth: "300px",
-                      borderRadius: "25px",
                     }}
                   >
                     <CardHeader
@@ -117,26 +115,23 @@ class ReviewMine extends Component<ReviewMineProps, ReviewMineVars> {
                       }
                       subheader={review.date}
                     />
-                    <CardMedia
-                      component="img"
-                      image={review.gameimage}
-                      style={{
-                        height: 150,
-                        marginRight: "auto",
-                        marginLeft: "auto",
-                      }}
-                    />
+                    <CardMedia component="img" image={review.gameimage} />
                     <CardContent>
                       <Typography color="textSecondary">Review:</Typography>
-                      <Typography style={{ fontFamily: "Nova Square" }}>
+                      <Typography
+                        className="clampText"
+                        style={{ fontFamily: "Nova Square" }}
+                      >
                         {review.feedback}
                       </Typography>
+
                       <br />
                       <Typography color="textSecondary">Rating:</Typography>
                       <Typography style={{ fontFamily: "Nova Square" }}>
                         {review.rating}
                       </Typography>
                     </CardContent>
+
                     <CardActions className="reivewminecardactions">
                       <ReviewUpdate
                         token={this.props.token}
