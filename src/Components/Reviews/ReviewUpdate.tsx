@@ -67,53 +67,57 @@ class ReviewUpdate extends Component<ReviewUpdateProps, ReviewUpdateVars> {
 
   render() {
     return (
-      <div className="updatereview">
-        <div className="updatereviewmaindiv">
-          <Button
-            className="updatereviewbtn"
-            id="updatereviewbtn"
-            onClick={this.toggle}
-          >
-            Edit Review
-          </Button>
-          <Modal isOpen={!this.state.modal} toggle={this.toggle}>
-            <ModalHeader toggle={this.toggle} className="reviewupdateheader">
-              Update Review
-            </ModalHeader>
-            <ModalBody>
-              <Form onSubmit={this.handleReviewUpdate}>
-              <textarea readOnly className="textareacreate">
-                {this.state.gametitle}
-                </textarea>
-                <br />
-                <Input
-                  type="text"
-                  placeholder="Date"
-                  className="editreviewinput"
-                  onChange={(e) => this.setState({ date: e.target.value })}
-                />
-                <br />
-                <textarea
-                  placeholder="Feedback"
-                  className="editreviewinputfeedback"
-                  onChange={(e) => this.setState({ feedback: e.target.value })}
-                />
-                <br />
-                <Input
-                  placeholder="Rating(1 being the worst and 5 being the best"
-                  className="editreviewinput"
-                  onChange={(e) => this.setState({ rating: e.target.value })}
-                  type="number"
-  min="1"
-  max="5"
-  value={this.state.rating}
-  required
-                />
-                <br />
-                <Button className="updatereviewbtn">Update Review</Button>
-              </Form>
-            </ModalBody>
-          </Modal>
+      <div className="page">
+        <div className="updatereview">
+          <div className="updatereviewmaindiv">
+            <Button
+              className="updatereviewbtn"
+              id="updatereviewbtn"
+              onClick={this.toggle}
+            >
+              Edit Review
+            </Button>
+            <Modal isOpen={!this.state.modal} toggle={this.toggle}>
+              <ModalHeader toggle={this.toggle} className="reviewupdateheader">
+                Update Review
+              </ModalHeader>
+              <ModalBody>
+                <Form onSubmit={this.handleReviewUpdate}>
+                  <textarea readOnly className="textareacreate">
+                    {this.state.gametitle}
+                  </textarea>
+                  <br />
+                  <Input
+                    type="text"
+                    placeholder="Date"
+                    className="editreviewinput"
+                    onChange={(e) => this.setState({ date: e.target.value })}
+                  />
+                  <br />
+                  <textarea
+                    placeholder="Feedback"
+                    className="editreviewinputfeedback"
+                    onChange={(e) =>
+                      this.setState({ feedback: e.target.value })
+                    }
+                  />
+                  <br />
+                  <Input
+                    placeholder="Rating(1 being the worst and 5 being the best"
+                    className="editreviewinput"
+                    onChange={(e) => this.setState({ rating: e.target.value })}
+                    type="number"
+                    min="1"
+                    max="5"
+                    value={this.state.rating}
+                    required
+                  />
+                  <br />
+                  <Button className="updatereviewbtn">Update Review</Button>
+                </Form>
+              </ModalBody>
+            </Modal>
+          </div>
         </div>
       </div>
     );

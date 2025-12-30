@@ -1,12 +1,25 @@
 /* index.css */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap");
 
 body {
   margin: 0;
-  font-family: 'Orbitron', sans-serif;
+  font-family: "Orbitron", sans-serif;
   background-color: #0f0f0f;
   color: #e0e0e0;
   line-height: 1.6;
+}
+
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 16px 40px;
+}
+.pageTitle {
+  text-align: center;
+  margin: 18px 0 18px;
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 0.5px;
+  color: #e9eef7;
 }
 
 a {
@@ -59,4 +72,3 @@ textarea {
   margin-bottom: 1.5rem;
   box-shadow: 0 0 12px rgba(0, 255, 255, 0.2);
 }
-

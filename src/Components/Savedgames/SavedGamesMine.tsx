@@ -1,12 +1,20 @@
 import React, { Component } from "react";
-import { Grid, Card, CardHeader, Typography, CardActions } from "@material-ui/core";
-import CreateSavedGame from "./CreateSavedGame"; // Import CreateSavedGame
+import {
+  Grid,
+  Card,
+  CardHeader,
+  Typography,
+  CardActions,
+} from "@material-ui/core";
+import CreateSavedGame from "./CreateSavedGame";
 import EditSavedGame from "./EditSavedGame";
 import DeleteSavedGame from "./DeleteSavedGame";
 import APIURL from "../../helpers/environment";
+import "./Saved.css";
 
 type SavedMineVars = {
   myPosts: any[];
+  loading: boolean;
 };
 
 type SavedMineProps = {
@@ -18,6 +26,7 @@ class SavedGamesMine extends Component<SavedMineProps, SavedMineVars> {
     super(props);
     this.state = {
       myPosts: [],
+      loading: false,
     };
   }
 
@@ -26,6 +35,8 @@ class SavedGamesMine extends Component<SavedMineProps, SavedMineVars> {
   }
 
   fetchSavedGames = async () => {
+    this.setState({ loading: true });
+
     await fetch(`${APIURL}/savedgame/savedmine`, {
       method: "GET",
       headers: {
@@ -36,25 +47,43 @@ class SavedGamesMine extends Component<SavedMineProps, SavedMineVars> {
       .then((response) => response.json())
       .then((data) => {
         this.setState({
-          myPosts: data,
+          myPosts: data || [],
+          loading: false,
         });
       })
       .catch((error) => {
         console.log(error.message);
+        this.setState({ loading: false });
       });
   };
 
   reloadSavedGames = () => {
-    this.fetchSavedGames(); // This will reload saved games after creation
+    this.fetchSavedGames();
   };
 
   render() {
-    const { myPosts } = this.state;
+    const { myPosts, loading } = this.state;
+
     return (
       <div className="createsaveddiv">
         <h1 className="createsavedhead">My Saved Games</h1>
-        <CreateSavedGame token={this.props.token} reloadSavedGames={this.reloadSavedGames} />
-        {myPosts.length > 0 ? (
+        <CreateSavedGame
+          token={this.props.token}
+          reloadSavedGames={this.reloadSavedGames}
+        />
+
+        {loading ? (
+          <Typography
+            align="center"
+            style={{
+              marginTop: 50,
+              color: "#e0e0e0",
+              fontFamily: "Nova Square",
+            }}
+          >
+            Loading...
+          </Typography>
+        ) : myPosts.length > 0 ? (
           <Grid
             container
             justify="center"
@@ -85,7 +114,7 @@ class SavedGamesMine extends Component<SavedMineProps, SavedMineVars> {
                       boxShadow: "0 8px 24px 0",
                       backgroundColor: "#9fafca",
                       maxWidth: "300px",
-                      borderRadius: " 25px 25px 25px 25px",
+                      borderRadius: "25px",
                       fontFamily: "Nova Square",
                     }}
                   >
@@ -109,6 +138,7 @@ class SavedGamesMine extends Component<SavedMineProps, SavedMineVars> {
                     <Typography style={{ fontFamily: "Nova Square" }}>
                       {myPost.platform}
                     </Typography>
+
                     <CardActions className="savedminecardaction">
                       <EditSavedGame
                         token={this.props.token}
@@ -127,19 +157,17 @@ class SavedGamesMine extends Component<SavedMineProps, SavedMineVars> {
             ))}
           </Grid>
         ) : (
-          <div style={{ textAlign: "center", marginTop: "20px" }}>
-            <Typography
-                    variant="h6"
-                    align="center"
-                    style={{
-                      marginTop: "50px",
-                      color: "#e0e0e0",
-                      fontFamily: "Nova Square",
-                    }}
-                  >
-              You don't have any saved games yet. Start by creating one!
-            </Typography>
-          </div>
+          <Typography
+            variant="h6"
+            align="center"
+            style={{
+              marginTop: "50px",
+              color: "#e0e0e0",
+              fontFamily: "Nova Square",
+            }}
+          >
+            You don't have any saved games yet. Start by creating one!
+          </Typography>
         )}
       </div>
     );

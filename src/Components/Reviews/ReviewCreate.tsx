@@ -4,16 +4,10 @@ import { Form, Input, Button, Modal, ModalBody, ModalHeader } from "reactstrap";
 import APIURL from "../../helpers/environment";
 import "./Display.css";
 
-<link href="https://fonts.googleapis.com/css2?family=Nova+Square&display=swap" rel="stylesheet"></link>
-
-
 type CreateReviewVars = {
-  gametitle: string;
-  gameimage: any;
   date: string;
   feedback: string;
-  rating: number | string;
-  owner: number;
+  rating: number;
   modal: boolean;
 };
 
@@ -26,12 +20,9 @@ class CreateReview extends Component<CreateReviewProps, CreateReviewVars> {
   constructor(props: CreateReviewProps) {
     super(props);
     this.state = {
-      gametitle: "",
-      gameimage: "",
       date: "",
       feedback: "",
-      rating: 0,
-      owner: 0,
+      rating: 5,
       modal: true,
     };
   }
@@ -40,10 +31,10 @@ class CreateReview extends Component<CreateReviewProps, CreateReviewVars> {
     this.setState({ modal: !this.state.modal });
   };
 
-
   handleCreate = async (e: any) => {
     e.preventDefault();
-    const response = await fetch(`${APIURL}/review/create`, {
+
+    await fetch(`${APIURL}/review/create`, {
       method: "POST",
       body: JSON.stringify({
         gametitle: this.props.game.name,
@@ -56,67 +47,70 @@ class CreateReview extends Component<CreateReviewProps, CreateReviewVars> {
         "Content-Type": "application/json",
         Authorization: `Bearer ${this.props.token}`,
       },
-    });
-    this.toggle();
-    const res = await response.json().catch((error) => {
-      console.log(error.message);
-    });
+    })
+      .then(() => {
+        this.toggle();
+        this.setState({ date: "", feedback: "", rating: 5 });
+      })
+      .catch((error) => console.log(error.message));
   };
 
   render() {
     return (
       <div>
-        <Button className="submitreviewbtn" onClick={this.toggle} >
+        <Button className="submitreviewbtn" onClick={this.toggle}>
           Create Review
         </Button>
         <Modal isOpen={!this.state.modal} toggle={this.toggle}>
-          <ModalHeader toggle={this.toggle} className="reviewcreateheader" >
+          <ModalHeader toggle={this.toggle} className="reviewcreateheader">
             Create Review
           </ModalHeader>
           <ModalBody>
-            <Form onSubmit={this.handleCreate} >
-              <div className="createreviewlabel">
-                <textarea readOnly className="textareacreate">
-                  {this.props.game.name}
-                </textarea>
-                <textarea readOnly className="textareacreate">
-                  {this.props.game.background_image}
-                </textarea>
-                <Input
-                  onChange={(e) => this.setState({ date: e.target.value })}
-                  className="reviewcreateinputs"
-                  placeholder="Date of review"
-                  value={this.state.date}
-                  required
-                />
-                <textarea
-                  onChange={(e) => this.setState({ feedback: e.target.value })}
-                  className="reviewcreateinputsfeedback"
-                  placeholder="Enter your review"
-                  value={this.state.feedback}
-                  required
-                />
-                <Typography color="textSecondary" style={{ fontFamily: 'Nova Square'}}>
-                  Rate this game(1 being the worst and 5 being the best)
-                </Typography>
-                <Input
-  onChange={(e) => this.setState({ rating: parseInt(e.target.value) || 0 })}
-  type="number"
-  min="1"
-  max="5"
-  className="reviewcreateinputs"
-  placeholder="Rate this game (1 to 5)"
-  value={this.state.rating}
-  required
-/>
-              </div>
-              <div>
-                <Button
-                  className="submitreviewbtn"
-                >
-                  Create Review
-                </Button>
-              </div>
+            <Form onSubmit={this.handleCreate}>
+              <textarea readOnly className="textareacreate">
+                {this.props.game.name}
+              </textarea>
+
+              <Input
+                type="date"
+                onChange={(e) => this.setState({ date: e.target.value })}
+                className="reviewcreateinputs"
+                value={this.state.date}
+                required
+              />
+
+              <textarea
+                onChange={(e) => this.setState({ feedback: e.target.value })}
+                className="reviewcreateinputsfeedback"
+                placeholder="Enter your review"
+                value={this.state.feedback}
+                required
+              />
+
+              <Typography
+                color="textSecondary"
+                style={{ fontFamily: "Nova Square" }}
+              >
+                Rating
+              </Typography>
+
+              <Input
+                type="select"
+                className="reviewcreateinputs"
+                value={this.state.rating}
+                onChange={(e) =>
+                  this.setState({ rating: Number(e.target.value) })
+                }
+                required
+              >
+                <option value={1}>1</option>
+                <option value={2}>2</option>
+                <option value={3}>3</option>
+                <option value={4}>4</option>
+                <option value={5}>5</option>
+              </Input>
+
+              <Button className="submitreviewbtn">Create Review</Button>
             </Form>
           </ModalBody>
         </Modal>

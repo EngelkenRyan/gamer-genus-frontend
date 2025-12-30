@@ -1,5 +1,11 @@
 import React from "react";
-import { Card, CardContent, CardMedia, Grid } from "@material-ui/core";
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Grid,
+  Typography,
+} from "@material-ui/core";
 import CreateReview from "./ReviewCreate";
 import "./Display.css";
 
@@ -8,17 +14,17 @@ type DisplayGamesVars = {
   apiKey: string;
   searchTerm: string;
   create: boolean;
-  gametitle: string;
-  gameimg: any;
-  gamegenre: string;
-  platform: string;
+  loading: boolean;
 };
 
 type DisplayGamesProps = {
   token: string;
 };
 
-class DisplayGames extends React.Component<DisplayGamesProps, DisplayGamesVars> {
+class DisplayGames extends React.Component<
+  DisplayGamesProps,
+  DisplayGamesVars
+> {
   constructor(props: DisplayGamesProps) {
     super(props);
     this.state = {
@@ -26,66 +32,78 @@ class DisplayGames extends React.Component<DisplayGamesProps, DisplayGamesVars> 
       apiKey: "75bf2e9cf0cf42a2ae29640a3379c0f1",
       searchTerm: "",
       create: false,
-      gametitle: "",
-      gameimg: "",
-      gamegenre: "",
-      platform: "",
+      loading: false,
     };
   }
 
-  // Fetch games when the component mounts
   componentDidMount() {
-    this.fetchRandomGames(); // Fetch random games on mount
+    this.fetchRandomGames();
   }
 
-  // Fetch random games for featured section
   fetchRandomGames = async () => {
-    await fetch(`https://api.rawg.io/api/games?key=${this.state.apiKey}&page_size=5`) // Fetch random games
+    this.setState({ loading: true });
+    await fetch(
+      `https://api.rawg.io/api/games?key=${this.state.apiKey}&page_size=5`
+    )
       .then((res) => res.json())
       .then((json) => {
         this.setState({
-          gamesList: json.results,
+          gamesList: json.results || [],
           create: true,
+          loading: false,
         });
       })
       .catch((error) => {
         console.log(error.message);
+        this.setState({ loading: false });
       });
   };
 
-  // Search games when the user enters a search term
   searchGames = async () => {
-    if (this.state.searchTerm.trim()) {
-      await fetch(
-        `https://api.rawg.io/api/games?key=${this.state.apiKey}&search=${this.state.searchTerm}`
-      )
-        .then((res) => res.json())
-        .then((json) => {
-          this.setState({
-            gamesList: json.results,
-            create: true,
-          });
-        })
-        .catch((error) => {
-          console.log(error.message);
+    if (!this.state.searchTerm.trim()) return;
+
+    this.setState({ loading: true });
+    await fetch(
+      `https://api.rawg.io/api/games?key=${
+        this.state.apiKey
+      }&search=${encodeURIComponent(this.state.searchTerm)}`
+    )
+      .then((res) => res.json())
+      .then((json) => {
+        this.setState({
+          gamesList: json.results || [],
+          create: true,
+          loading: false,
         });
+      })
+      .catch((error) => {
+        console.log(error.message);
+        this.setState({ loading: false });
+      });
+  };
+
+  updateSearchTerm = (e: any) => {
+    this.setState({ searchTerm: e.target.value });
+  };
+
+  // Press Enter to search
+  onSearchKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      this.searchGames();
     }
   };
 
-  // Update search term when the user types
-  updateSearchTerm = (e: any) => {
-    this.setState({
-      searchTerm: e.target.value,
-    });
-  };
-
-  // Reset search state to show random games again
+  // Clear search and go back to featured list
   resetSearchState = () => {
-    this.setState({
-      gamesList: [],
-      create: false,
-    });
-    this.fetchRandomGames(); // Fetch random games after reset
+    this.setState(
+      {
+        gamesList: [],
+        create: false,
+        searchTerm: "",
+      },
+      () => this.fetchRandomGames()
+    );
   };
 
   render() {
@@ -100,74 +118,82 @@ class DisplayGames extends React.Component<DisplayGamesProps, DisplayGamesVars> 
               className="searchbarinput"
               value={this.state.searchTerm}
               onChange={this.updateSearchTerm}
+              onKeyDown={this.onSearchKeyDown}
             />
-            <button
-              className="searchButton"
-              onClick={this.searchGames}
-              style={{ fontFamily: "Nova Square" }}
-            >
+            <button className="searchButton" onClick={this.searchGames}>
               Search
+            </button>
+            <button className="clearButton" onClick={this.resetSearchState}>
+              Clear
             </button>
           </label>
         </div>
 
-        {/* Featured Games Section */}
         <div className="featured-games-section">
           <h1>Featured Games</h1>
-          <Grid
-            container
-            justify="center"
-            className="displaygrid"
-            style={{
-              textAlign: "center",
-              marginRight: "auto",
-              marginLeft: "auto",
-              height: "70%",
-              width: "70%",
-            }}
-          >
-            {this.state.gamesList.map((games) => {
-              return (
-                <Grid
-                  container
-                  xs={12}
-                  sm={4}
-                  justify="center"
-                  spacing={0}
-                  max-width="400px"
-                  style={{ marginBottom: "25px" }}
-                  key={games.id}
-                >
-                  <Card
-                    className="card"
-                    variant="outlined"
-                    style={{
-                      boxShadow: "0 8px 24px 0",
-                      backgroundColor: "#9fafca",
-                      maxWidth: "300px",
-                      borderRadius: "25px 25px 25px 25px",
-                    }}
+
+          {this.state.loading ? (
+            <Typography
+              align="center"
+              style={{ marginTop: 50, color: "#e0e0e0" }}
+            >
+              Loading...
+            </Typography>
+          ) : (
+            <Grid
+              container
+              justify="center"
+              className="displaygrid"
+              style={{
+                textAlign: "center",
+                marginRight: "auto",
+                marginLeft: "auto",
+                height: "70%",
+                width: "70%",
+              }}
+            >
+              {this.state.gamesList.map((games) => {
+                return (
+                  <Grid
+                    container
+                    xs={12}
+                    sm={4}
+                    justify="center"
+                    spacing={0}
+                    key={games.id}
+                    style={{ marginBottom: "25px" }}
                   >
-                    <CardMedia
-                      component="img"
-                      image={games.background_image}
+                    <Card
+                      className="card"
+                      variant="outlined"
                       style={{
-                        height: 150,
-                        marginRight: "auto",
-                        marginLeft: "auto",
+                        boxShadow: "0 8px 24px 0",
+                        backgroundColor: "#9fafca",
+                        maxWidth: "300px",
+                        borderRadius: "25px",
                       }}
-                    />
-                    <CardContent>
-                      {games.name}
-                      <br />
-                      {games.released}
-                    </CardContent>
-                    <CreateReview token={this.props.token} game={games} />
-                  </Card>
-                </Grid>
-              );
-            })}
-          </Grid>
+                    >
+                      <CardMedia
+                        component="img"
+                        image={games.background_image}
+                        style={{
+                          height: 150,
+                          marginRight: "auto",
+                          marginLeft: "auto",
+                        }}
+                      />
+                      <CardContent>
+                        {games.name}
+                        <br />
+                        {games.released}
+                      </CardContent>
+                      <CreateReview token={this.props.token} game={games} />
+                    </Card>
+                  </Grid>
+                );
+              })}
+            </Grid>
+          )}
         </div>
       </div>
     );

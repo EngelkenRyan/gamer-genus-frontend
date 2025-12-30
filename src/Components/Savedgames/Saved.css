@@ -1,5 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Nova+Square&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nova+Square&display=swap");
+
+/* Page background */
+.createsaveddiv {
+  background: linear-gradient(180deg, #526f9e 0%, #344a73 100%);
+  overflow: auto;
+  height: 100vh;
+  padding-top: 44px;
+  padding-bottom: 25px;
+  font-family: "Nova Square", cursive;
+}
 
 /* Create Saved Button */
 .createsavedbtn {
@@ -12,7 +22,7 @@
   margin-bottom: 2%;
   font-size: 12px;
   border-radius: 12px;
-  font-family: 'Nova Square', cursive;
+  font-family: "Nova Square", cursive;
 }
 
 .createsavedbtn:hover {
@@ -22,7 +32,7 @@
 
 /* Edit Saved Button */
 .editsavedbtn {
-background-color: #c0c0c0;
+  background-color: #c0c0c0;
   color: black;
   margin-left: auto;
   margin-right: auto;
@@ -31,7 +41,7 @@ background-color: #c0c0c0;
   margin-bottom: 2%;
   font-size: 12px;
   border-radius: 12px;
-  font-family: 'Nova Square', cursive;
+  font-family: "Nova Square", cursive;
 }
 
 .editsavedbtn:hover {
@@ -40,7 +50,6 @@ background-color: #c0c0c0;
 }
 
 /* Delete Saved Button */
-
 .deletesavedbtn {
   background-color: #c0c0c0;
   color: black;
@@ -55,24 +64,20 @@ background-color: #c0c0c0;
 }
 
 /* Create Saved Game */
-
 .createsavedinput {
   text-align: center;
   background-color: #c0c0c0;
   margin-bottom: 10px;
   color: black;
   border-radius: 12px;
-  font-family: 'Nova Square', cursive;
-
+  font-family: "Nova Square", cursive;
 }
 
 .createsavedheader {
   margin-right: auto;
   margin-left: auto;
-  font-family: 'Orbitron', sans-serif;
+  font-family: "Orbitron", sans-serif;
 }
-
-/* Saved Games Mine */
 
 .savedminecardaction {
   display: grid;
@@ -81,49 +86,20 @@ background-color: #c0c0c0;
   margin-top: 20px;
 }
 
-.savedminecard {
-  background-color: #f0f0f0;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 300px;
-  /* Fixed height */
-}
-
-.savedminecard img {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-}
-
 .reivewminecardactions {
   display: flex;
   justify-content: center;
 }
 
-.createsaveddiv {
-  background-color: #526f9e;
-  overflow: auto;
-  height: 100vh;
-  padding-top: 44px;
-  padding-bottom: 25px;
-  font-family: 'Nova Square', cursive;
-}
-
 .myPosts {
-  font-family: 'Nova Square', cursive;
+  font-family: "Nova Square", cursive;
 }
 
 /* Saved Game Edit */
-
 .editsavedheader {
   display: flex;
   justify-content: center;
-  font-family: 'Orbitron', sans-serif;
-
+  font-family: "Orbitron", sans-serif;
 }
 
 .editgameinput {
@@ -132,7 +108,7 @@ background-color: #c0c0c0;
   margin-bottom: 10px;
   color: black;
   border-radius: 12px;
-  font-family: 'Nova Square', cursive;
+  font-family: "Nova Square", cursive;
 }
 
 .createsavedhead {
@@ -141,22 +117,4 @@ background-color: #c0c0c0;
   margin-right: auto;
   margin-left: auto;
   margin-bottom: 25px;
-}
-
-
-.reviewcreateheader {
-  display: flex;
-  justify-content: space-between;
-  /* Align the content with space between */
-  align-items: center;
-}
-
-/* Position the close button in the top-right corner */
-.close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 20px;
-  color: #000;
-  /* Optional: change color to match your design */
 }

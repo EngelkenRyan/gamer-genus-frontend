@@ -17,6 +17,11 @@ class DeleteSavedGame extends Component<DeleteGameProps, DeleteGameVars> {
   }
 
   deleteGame = async () => {
+    const ok = window.confirm(
+      "Are you sure you want to delete this saved game?"
+    );
+    if (!ok) return;
+
     await fetch(`${APIURL}/savedgame/saveddelete/${this.props.myPosts.id}`, {
       method: "DELETE",
       headers: {
@@ -25,7 +30,7 @@ class DeleteSavedGame extends Component<DeleteGameProps, DeleteGameVars> {
       },
     })
       .then((response) => response.json())
-      .then((data) => {
+      .then(() => {
         this.props.fetchMySavedGames();
       })
       .catch((error) => {
@@ -38,7 +43,7 @@ class DeleteSavedGame extends Component<DeleteGameProps, DeleteGameVars> {
       <div>
         <Button
           className="deletesavedbtn"
-          type="submit"
+          type="button"
           onClick={this.deleteGame}
         >
           Delete Saved Game

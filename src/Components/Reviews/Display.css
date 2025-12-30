@@ -1,9 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Nova+Square&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nova+Square&display=swap");
 
 .modal-content {
   background-color: #9fafca;
   color: black;
+}
+
+/* Subtle background gradient polish */
+.displaygamesdiv,
+.reviewAll,
+.reviewmine,
+.createsaveddiv {
+  background: linear-gradient(180deg, #526f9e 0%, #344a73 100%);
+}
+
+/* Page wrapper (if you're using .page from App.css, this just plays nice) */
+.featured-games-section {
+  padding-bottom: 30px;
 }
 
 /* Review Create */
@@ -13,7 +26,7 @@
   margin-bottom: 10px;
   color: black;
   border-radius: 12px;
-  font-family: 'Nova Square', cursive;
+  font-family: "Nova Square", cursive;
 }
 
 .reviewcreateinputsfeedback {
@@ -25,7 +38,7 @@
   line-height: 28px;
   width: 100%;
   border-radius: 12px;
-  font-family: 'Nova Square', cursive;
+  font-family: "Nova Square", cursive;
 }
 
 .textareacreate {
@@ -35,18 +48,17 @@
   color: black;
   width: 100%;
   border-radius: 12px;
-  font-family: 'Nova Square', cursive;
-
+  font-family: "Nova Square", cursive;
 }
 
 .submitreviewbtn {
   display: block;
-    margin: 20px auto 0 auto;
+  margin: 20px auto 0 auto;
   background-color: #c0c0c0;
   color: black;
   font-size: 12px;
   border-radius: 12px;
-  font-family: 'Nova Square', cursive;
+  font-family: "Nova Square", cursive;
   text-align: center;
 }
 
@@ -58,12 +70,8 @@
 .reviewcreateheader {
   margin-right: auto;
   margin-left: auto;
-  font-family: 'Orbitron', sans-serif;
-
+  font-family: "Orbitron", sans-serif;
 }
-
-
-/* @import url("https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@1,700&display=swap"); */
 
 /* Display Games */
 .searchbar {
@@ -71,25 +79,28 @@
   margin-left: auto;
   text-align: center;
   margin-bottom: 30px;
-  font-family: 'Orbitron', sans-serif;
+  font-family: "Orbitron", sans-serif;
 }
 
+/* A nicer search box */
 .searchbarinput {
   margin-left: 2%;
   border-style: none;
   border-bottom: solid;
   border-radius: 12px;
-  font-family: 'Nova Square', cursive;
+  font-family: "Nova Square", cursive;
+  width: min(420px, 80vw);
+  padding: 10px 12px;
+  outline: none;
 }
 
 .displaygamesdiv {
-  background-color: #526f9e;
   overflow: auto;
   height: 100vh;
   padding-top: 44px;
   padding-bottom: 25px;
   margin-top: 2%;
-  font-family: 'Nova Square', cursive;
+  font-family: "Nova Square", cursive;
 }
 
 .searchButton {
@@ -97,14 +108,18 @@
   color: black;
   margin-left: auto;
   margin-right: auto;
-  display: flex;
-  margin-top: 2%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
   margin-bottom: 2%;
   font-size: 12px;
   border-radius: 12px;
-  font-family: 'Nova Square', cursive;
-  border-color: none;
+  font-family: "Nova Square", cursive;
   border-style: none;
+  padding: 10px 14px;
+  font-weight: 600;
+  cursor: pointer;
 }
 
 .searchButton:hover {
@@ -112,15 +127,17 @@
   color: white;
 }
 
-/* Review All */
+.clearButton {
+  margin-left: 10px;
+}
 
+/* Review All */
 .reviewAll {
-  background-color: #526f9e;
   overflow: auto;
   height: 100vh;
   padding-top: 44px;
   padding-bottom: 25px;
-  font-family: 'Orbitron', sans-serif;
+  font-family: "Orbitron", sans-serif;
 }
 
 .reviewallhead {
@@ -132,19 +149,17 @@
 }
 
 .allReviews {
-  font-family: 'Nova Square', cursive;
+  font-family: "Nova Square", cursive;
 }
 
 /* Review Mine */
-
 .reviewminehead {
   margin-top: 30px;
   text-align: center;
   margin-right: auto;
   margin-left: auto;
   margin-bottom: 25px;
-  font-family: 'Orbitron', sans-serif;
-
+  font-family: "Orbitron", sans-serif;
 }
 
 .reviewminecardactions {
@@ -153,7 +168,6 @@
 }
 
 .reviewmine {
-  background-color: #526f9e;
   overflow: auto;
   height: 100vh;
   padding-top: 44px;
@@ -161,18 +175,17 @@
 }
 
 /* Update Button */
-
 .updatereviewbtn {
   background-color: #c0c0c0;
-    color: black;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    margin-top: 2%;
-    margin-bottom: 2%;
-    font-size: 12px;
-    border-radius: 12px;
-    font-family: 'Nova Square', cursive;
+  color: black;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  font-size: 12px;
+  border-radius: 12px;
+  font-family: "Nova Square", cursive;
 }
 
 .updatereviewbtn:hover {
@@ -187,7 +200,7 @@
   margin-bottom: 5%;
   font-size: 12px;
   border-radius: 12px;
-  font-family: 'Nova Square', cursive;
+  font-family: "Nova Square", cursive;
 }
 
 .deletereviewbtn:hover {
@@ -196,12 +209,11 @@
 }
 
 /* Review Update */
-
 .reviewupdateheader {
   margin-right: auto;
   margin-left: auto;
   align-content: center;
-  font-family: 'Orbitron', sans-serif;
+  font-family: "Orbitron", sans-serif;
 }
 
 .editreviewinput {
@@ -210,8 +222,7 @@
   margin-bottom: 10px;
   color: black;
   border-radius: 12px;
-  font-family: 'Nova Square', cursive;
-
+  font-family: "Nova Square", cursive;
 }
 
 .editreviewinputfeedback {
@@ -223,35 +234,38 @@
   line-height: 28px;
   width: 100%;
   border-radius: 12px;
-  font-family: 'Nova Square', cursive;
-
+  font-family: "Nova Square", cursive;
 }
 
-/* Card Effects */
-
+/* Card Effects (polished hover) */
 .card {
   display: block;
   top: 0px;
   position: relative;
   max-width: 262px;
   background-color: #f2f8f9;
-  border-radius: 4px;
+  border-radius: 18px;
   padding: 32px 24px;
   margin: 12px;
   text-decoration: none;
   z-index: 0;
   overflow: hidden;
   border: 1px solid #f2f8f9;
+  transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
 .card:hover {
-  transform: scale(1.15);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+}
+
+.card img {
+  object-fit: cover;
 }
 
 .featured-games-section h1 {
   text-align: center;
-  font-family: 'Orbitron', sans-serif;
+  font-family: "Orbitron", sans-serif;
   color: #e0e0e0;
   margin-bottom: 20px;
 }

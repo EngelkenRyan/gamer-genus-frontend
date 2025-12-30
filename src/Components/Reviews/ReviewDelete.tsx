@@ -17,6 +17,9 @@ class ReviewDelete extends Component<ReviewDeleteProps, ReviewDeleteVars> {
   }
 
   deleteReview = async () => {
+    const ok = window.confirm("Are you sure you want to delete this review?");
+    if (!ok) return;
+
     await fetch(`${APIURL}/review/delete/${this.props.myReviews.id}`, {
       method: "DELETE",
       headers: {
@@ -25,7 +28,7 @@ class ReviewDelete extends Component<ReviewDeleteProps, ReviewDeleteVars> {
       },
     })
       .then((response) => response.json())
-      .then((data) => {
+      .then(() => {
         this.props.fetchMyReviews();
       })
       .catch((error) => {
@@ -38,7 +41,7 @@ class ReviewDelete extends Component<ReviewDeleteProps, ReviewDeleteVars> {
       <div>
         <Button
           className="deletereviewbtn"
-          type="submit"
+          type="button"
           onClick={this.deleteReview}
         >
           Delete Review

@@ -13,12 +13,8 @@ import ReviewUpdate from "./ReviewUpdate";
 import APIURL from "../../helpers/environment";
 
 type ReviewMineVars = {
-  gametitle: string;
-  gameimage: any;
-  date: string;
-  feedback: string;
-  rating: number | string;
   myReviews: any[];
+  loading: boolean;
 };
 
 type ReviewMineProps = {
@@ -29,12 +25,8 @@ class ReviewMine extends Component<ReviewMineProps, ReviewMineVars> {
   constructor(props: ReviewMineProps) {
     super(props);
     this.state = {
-      gametitle: "",
-      gameimage: "",
-      date: "",
-      feedback: "",
-      rating: "",
       myReviews: [],
+      loading: false,
     };
   }
 
@@ -43,6 +35,8 @@ class ReviewMine extends Component<ReviewMineProps, ReviewMineVars> {
   }
 
   fetchReviewMine = async () => {
+    this.setState({ loading: true });
+
     await fetch(`${APIURL}/review/mine`, {
       method: "GET",
       headers: {
@@ -53,22 +47,35 @@ class ReviewMine extends Component<ReviewMineProps, ReviewMineVars> {
       .then((response) => response.json())
       .then((data) => {
         this.setState({
-          myReviews: data,
+          myReviews: data || [],
+          loading: false,
         });
       })
       .catch((error) => {
         console.log(error.message);
+        this.setState({ loading: false });
       });
   };
 
   render() {
-    const { myReviews } = this.state;
+    const { myReviews, loading } = this.state;
 
     return (
       <div className="reviewmine">
         <h1 className="reviewminehead">My Reviews</h1>
 
-        {myReviews.length > 0 ? (
+        {loading ? (
+          <Typography
+            align="center"
+            style={{
+              marginTop: 50,
+              color: "#e0e0e0",
+              fontFamily: "Nova Square",
+            }}
+          >
+            Loading...
+          </Typography>
+        ) : myReviews.length > 0 ? (
           <Grid
             container
             justify="center"
@@ -110,7 +117,6 @@ class ReviewMine extends Component<ReviewMineProps, ReviewMineVars> {
                       }
                       subheader={review.date}
                     />
-
                     <CardMedia
                       component="img"
                       image={review.gameimage}
@@ -120,21 +126,17 @@ class ReviewMine extends Component<ReviewMineProps, ReviewMineVars> {
                         marginLeft: "auto",
                       }}
                     />
-
                     <CardContent>
                       <Typography color="textSecondary">Review:</Typography>
                       <Typography style={{ fontFamily: "Nova Square" }}>
                         {review.feedback}
                       </Typography>
-
                       <br />
-
                       <Typography color="textSecondary">Rating:</Typography>
                       <Typography style={{ fontFamily: "Nova Square" }}>
                         {review.rating}
                       </Typography>
                     </CardContent>
-
                     <CardActions className="reivewminecardactions">
                       <ReviewUpdate
                         token={this.props.token}
