@@ -131,7 +131,7 @@ class ReviewMine extends Component<ReviewMineProps, ReviewMineVars> {
                       </Typography>
                     </CardContent>
 
-                    <CardActions className="reivewminecardactions">
+                    <CardActions className="reviewminecardactions">
                       <ReviewUpdate
                         token={this.props.token}
                         myReviews={review}
