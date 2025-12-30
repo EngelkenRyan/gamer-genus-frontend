@@ -164,10 +164,9 @@
   color: black !important;
 }
 
-/* ✅ Consistent card sizing */
 .card {
   width: 320px;
-  min-height: 430px;
+  height: 430px; /* fixed height = same size everywhere */
   display: flex;
   flex-direction: column;
 
@@ -186,17 +185,42 @@
   box-shadow: 0 18px 44px rgba(0, 0, 0, 0.35);
 }
 
+/* image stays consistent */
 .card img {
   height: 170px !important;
   width: 100%;
   object-fit: cover;
 }
 
-.card .MuiCardContent-root {
-  flex: 1;
+/* Center header text (My Reviews / Review All) */
+.card .MuiCardHeader-root {
+  text-align: center;
+  padding-bottom: 6px;
 }
 
-/* Clamp long review text so cards don't grow */
+.card .MuiCardHeader-content {
+  text-align: center;
+}
+
+/* Center body content and make it "feel" full */
+.card .MuiCardContent-root {
+  flex: 1; /* takes remaining space */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* centers content vertically */
+  align-items: center; /* centers horizontally */
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* Keep buttons/actions nicely placed and centered */
+.card .MuiCardActions-root {
+  justify-content: center;
+  padding-bottom: 14px;
+}
+
+/* Clamp long review text so it doesn't stretch cards */
 .clampText {
   display: -webkit-box;
   -webkit-line-clamp: 4;
