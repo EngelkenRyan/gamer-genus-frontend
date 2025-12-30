@@ -77,20 +77,16 @@ class ReviewAll extends Component<ReviewAllProps, ReviewAllVars> {
           <Grid
             container
             justify="center"
-            style={{
-              textAlign: "center",
-              marginRight: "auto",
-              marginLeft: "auto",
-              width: "70%",
-            }}
+            spacing={3}
+            style={{ width: "90%", margin: "0 auto" }}
           >
             {myReviews.map((review) => (
               <Grid
-                container
+                item
                 xs={12}
-                sm={4}
-                justify="center"
-                spacing={0}
+                sm={6}
+                md={4}
+                lg={3}
                 style={{ marginBottom: "25px" }}
                 key={review.id}
               >

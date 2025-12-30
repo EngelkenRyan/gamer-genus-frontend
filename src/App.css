@@ -20,7 +20,7 @@ body {
 
 /* Everything under the navbar */
 .main {
-  padding-top: var(--nav-height);
+  padding-top: 0; 
 }
 
 a {

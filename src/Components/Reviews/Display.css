@@ -11,11 +11,11 @@
 .reviewAll,
 .reviewmine {
   background: linear-gradient(180deg, #526f9e 0%, #344a73 100%);
-  overflow: auto;
-  height: calc(100vh - var(--nav-height));
-  padding-top: 0;
-  margin-top: 0;
-  padding-bottom: 25px;
+  min-height: calc(100vh - var(--nav-height)); /* fills screen */
+  overflow: visible; /* prevents the extra inner scrollbar */
+  padding-top: 20px;
+  padding-bottom: 40px;
+  margin: 0;
   font-family: "Nova Square", cursive;
 }
 
