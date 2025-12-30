@@ -20,7 +20,7 @@ body {
 
 /* Everything under the navbar */
 .main {
-  padding-top: 0; 
+  padding-top: 0;
 }
 
 a {
@@ -57,4 +57,13 @@ textarea {
   padding: 0.5rem;
   border-radius: 4px;
   width: 100%;
+}
+
+.appCard {
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.2);
 }

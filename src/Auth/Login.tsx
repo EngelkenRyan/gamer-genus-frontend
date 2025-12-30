@@ -7,7 +7,7 @@ type UserVars = {
   email: string;
   password: string;
   success: boolean;
-  errorMessage: string; // Added for error display
+  errorMessage: string;
 };
 
 type LoginProps = {
@@ -22,12 +22,13 @@ class Login extends Component<LoginProps, UserVars> {
       email: "",
       password: "",
       success: false,
-      errorMessage: "", // Initialize error message
+      errorMessage: "",
     };
   }
 
-  handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  handleSubmit = (e?: React.FormEvent<HTMLFormElement>) => {
+    if (e) e.preventDefault();
+
     fetch(`${APIURL}/user/login`, {
       method: "POST",
       body: JSON.stringify({
@@ -49,13 +50,31 @@ class Login extends Component<LoginProps, UserVars> {
       .then((data) => {
         this.props.updateToken(data.sessionToken);
         localStorage.setItem("role", data.user.role);
-        this.setState({ errorMessage: "", success: true }); // Clear error on success
+        this.setState({ errorMessage: "", success: true });
       })
       .catch((error) => {
         this.setState({
-          errorMessage: error.message, // Display the backend error
+          errorMessage: error.message,
         });
       });
+  };
+
+  // ✅ quick demo logins
+  loginAs = (type: "user" | "admin") => {
+    // IMPORTANT: Create these accounts in your DB once (see notes below)
+    const creds =
+      type === "admin"
+        ? { email: "testadmin@gamergenus.com", password: "Test@1234" }
+        : { email: "testuser@gamergenus.com", password: "Test@1234" };
+
+    this.setState(
+      {
+        email: creds.email,
+        password: creds.password,
+        errorMessage: "",
+      },
+      () => this.handleSubmit()
+    );
   };
 
   render() {
@@ -63,14 +82,39 @@ class Login extends Component<LoginProps, UserVars> {
       <div className="logindiv">
         <h1 className="loginheader">Login</h1>
         <br />
-        <br />
 
-        {/* Display error message if it exists */}
         {this.state.errorMessage && (
-          <div style={{ color: "red", marginBottom: "1%", textAlign: "center" }}>
+          <div
+            style={{ color: "red", marginBottom: "1%", textAlign: "center" }}
+          >
             {this.state.errorMessage}
           </div>
         )}
+
+
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: 10,
+            marginBottom: 12,
+          }}
+        >
+          <Button
+            type="button"
+            className="loginbtn"
+            onClick={() => this.loginAs("user")}
+          >
+            Test User
+          </Button>
+          <Button
+            type="button"
+            className="loginbtn"
+            onClick={() => this.loginAs("admin")}
+          >
+            Test Admin
+          </Button>
+        </div>
 
         <Form onSubmit={this.handleSubmit}>
           <FormGroup className="login-form">
@@ -95,6 +139,7 @@ class Login extends Component<LoginProps, UserVars> {
               }}
             />
           </FormGroup>
+
           <FormGroup className="login-form">
             <Label htmlFor="password" className="login-label">
               Password
@@ -117,6 +162,7 @@ class Login extends Component<LoginProps, UserVars> {
               }}
             />
           </FormGroup>
+
           <Button
             type="submit"
             className="loginbtn"
